@@ -11,16 +11,50 @@
     <div class="container">
       <h1>Get your news!</h1>
       <div class="card">
-      <div id="topBBC">
-        <button class="btn-success" id="bbcNews">Get Current BBC News!</button>
-        <br>
-        <br>
-        <h3>Top BBC news articles:</h3>
-        <ul id="BBC">
+        <div id="topBBC">
+          <button onclick="this.disabled=true" class="btn btn-info" id="bbcNews">Get Current BBC News!</button>
+          <br>
+          <br>
+          <h3>Top BBC news articles:</h3>
+          <ul>
 
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+
+      <div class="card">
+        <div id="topHacker">
+          <button onclick="this.disabled=true" class="btn btn-warning" id="hackerNews">Get Current hacker News!</button>
+          <br>
+          <br>
+          <h3>Top Hacker news articles:</h3>
+          <ul>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="newsCategory">
+          <form id="news-category-form">
+            <label for="category">Select news category:</label>
+            <select id="category" name="category">
+              <option value="sports">Sports</option>
+              <option value="technology">Technology</option>
+              <option value="business">Business</option>
+              <option value="general">General</option>
+              <option value="politics">Politics</option>
+            </select>
+            <button type="submit" class=" btn btn-danger" id="categoryButton">Search for News in this Category</button>
+          </form>
+          <br>
+          <br>
+          <h3>Top News articles:</h3>
+          <ul>
+
+          </ul>
+        </div>
+      </div>
     </div>
   </body>
 </html>
