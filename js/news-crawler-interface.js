@@ -1,7 +1,7 @@
 import { News } from './../js/news-crawler.js';
 
 $(document).ready(function() {
-  $('#newsGenerator').click(function() {
+  $('#bbcNews').click(function() {
     //dont run below code until the (promise) is resolved
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -23,7 +23,7 @@ $(document).ready(function() {
         arr.push(article);
       })
       arr.forEach(function(article) {
-          $('#topBBC').append(`<li><a href='${article}'</a>${article.title}</li>`);
+          $('#topBBC').append(`<li><a href='${article.url}'</a>${article.title}</li>`);
       }, function(error) {
           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
       });
