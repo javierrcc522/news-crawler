@@ -22,7 +22,7 @@ $(document).ready(function() {
 
   $('#news-category-form').submit(function(event) {
     event.preventDefault();
-    let category = $('#category').val();
+    let pickleRick = $('#category').val();
     console.log(category);
     //dont run below code until the (promise) is resolved
     let promise3 = new Promise(function(resolve, reject) {
@@ -44,9 +44,10 @@ $(document).ready(function() {
       console.log(body);
       let arr = [];
       body.sources.forEach(function(walnut) {
-        // if(`${source.category}` === category) {
+        let walnutNut = walnut.category;
+        if(walnutNut === pickleRick) {
           arr.push(walnut);
-        // }
+        }
       });
       arr.forEach(function(walnut) {
           $('#newsCategory').append(`<li><a href='${walnut.url}'</a>${walnut.name}</li>`);
