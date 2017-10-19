@@ -3,9 +3,18 @@ import { News } from './../js/news-crawler.js';
 
 $(document).ready(function() {
 
-  $('#bbcNews').click(function() {
+  //delete button
+    $('#clearButton').click(function() {
+      $('#source-list').text("");
+    });
+
+  $('#news-source-form').submit(function(event) {
+    event.preventDefault();
+    console.log('something');
     let news = new News();
-    news.newsSourceApi().then(greeting);
+    let newssrc = $('#source').val();
+    console.log(newssrc);
+    news.newsSourceApi(newssrc).then(greeting);
 
     function greeting(response){
       let body = JSON.parse(response);
@@ -14,7 +23,7 @@ $(document).ready(function() {
         arr.push(article);
       });
       arr.forEach(function(article) {
-          $('#topBBC').append(`<li><a href='${article.url}'</a>${article.title}</li>`);
+          $('#source-list').append(`<li><a href='${article.url}'</a>${article.title}</li>`);
       }, function(error) {
           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
       });

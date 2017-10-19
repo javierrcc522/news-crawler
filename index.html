@@ -11,14 +11,29 @@
     <div class="container">
       <h1>Get your news!</h1>
       <div class="card">
-        <div id="topBBC">
-          <button onclick="this.disabled=true" class="btn btn-info" id="bbcNews">Get Current BBC News!</button>
+        <div id="newsSource">
+          <!--new form-->
+          <form id="news-source-form">
+            <label for="source">Select news source:</label>
+            <select id="source" name="source">
+              <option value="bbc-news">BBC News</option>
+              <option value="buzzfeed">Buzzfeed</option>
+              <option value="cnn">CNN</option>
+              <option value="google-news">Google News</option>
+              <option value="hacker-news">Hacker News</option>
+            </select>
+            <button type="submit" class=" btn btn-danger" id="sourceButton">Select News Source</button>
+          </form>
+          <!--new form end-->
+          <button type="button" class="btn btn-info" id="clearButton">Reset the search results</button>
           <br>
           <br>
-          <h3>Top BBC news articles:</h3>
-          <ul>
+          <h3>Top news articles:</h3>
+          <div id="source-list">
+            <ul>
 
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -39,7 +54,7 @@
           <button type="button" class="btn btn-warning" id="resetButton">Reset the search results</button>
           <br>
           <br>
-          <h3>Top News articles:</h3>
+          <h3>Top News Sources:</h3>
           <div id = "news-list">
             <ul>
 
