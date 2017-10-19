@@ -2,6 +2,7 @@ import { News } from './../js/news-crawler.js';
 
 
 $(document).ready(function() {
+
   $('#bbcNews').click(function() {
     let news = new News();
     news.newsSourceApi().then(greeting);
@@ -20,10 +21,15 @@ $(document).ready(function() {
     }
   });
 
+  $('#resetButton').click(function() {
+    console.log("woop");
+    $('#news-list').text("");
+  });
+
   $('#news-category-form').submit(function(event) {
     event.preventDefault();
     let pickleRick = $('#category').val();
-    console.log(category);
+
     //dont run below code until the (promise) is resolved
     let promise3 = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -50,7 +56,7 @@ $(document).ready(function() {
         }
       });
       arr.forEach(function(walnut) {
-          $('#newsCategory').append(`<li><a href='${walnut.url}'</a>${walnut.name}</li>`);
+          $('#news-list').append(`<li><a href='${walnut.url}'</a>${walnut.name}</li>`);
       }, function(error) {
           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
       });
