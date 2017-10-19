@@ -20,12 +20,14 @@ $(document).ready(function() {
     }
   });
 
-  $('#categoryButton').click(function() {
+  $('#news-category-form').submit(function(event) {
+    event.preventDefault();
     let category = $('#category').val();
+    console.log(category);
     //dont run below code until the (promise) is resolved
     let promise3 = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://newsapi.org/v1/sources?category`;
+      let url = `https://newsapi.org/v1/sources`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -39,14 +41,15 @@ $(document).ready(function() {
 
     promise3.then(function(response) {
       let body = JSON.parse(response);
+      console.log(body);
       let arr = [];
-      body.sources.forEach(function(source) {
-        if(`${source.category}` === category) {
-          arr.push(source);
-        }
+      body.sources.forEach(function(walnut) {
+        // if(`${source.category}` === category) {
+          arr.push(walnut);
+        // }
       });
-      arr.forEach(function(category) {
-          $('#newsCategory').append(`<li><a href='${source.url}'</a>${source.description}</li>`);
+      arr.forEach(function(walnut) {
+          $('#newsCategory').append(`<li><a href='${walnut.url}'</a>${walnut.name}</li>`);
       }, function(error) {
           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
       });
