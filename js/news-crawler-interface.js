@@ -21,33 +21,22 @@ $(document).ready(function() {
     }
   });
 
+//delete button
   $('#resetButton').click(function() {
-    console.log("woop");
     $('#news-list').text("");
   });
 
+// second api
   $('#news-category-form').submit(function(event) {
     event.preventDefault();
+    let news = new News();
     let pickleRick = $('#category').val();
+    news.newsCategoryApi().then(greeting2);
 
     //dont run below code until the (promise) is resolved
-    let promise3 = new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-      let url = `https://newsapi.org/v1/sources`;
-      request.onload = function() {
-        if (this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(Error(request.statusText));
-        }
-      };
-      request.open("GET", url, true);
-      request.send();
-    });
 
-    promise3.then(function(response) {
+    function greeting2(response){
       let body = JSON.parse(response);
-      console.log(body);
       let arr = [];
       body.sources.forEach(function(walnut) {
         let walnutNut = walnut.category;
@@ -60,6 +49,6 @@ $(document).ready(function() {
       }, function(error) {
           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
       });
-    });
-  });
+    }
+  });// making functiongretting
 });
